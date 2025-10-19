@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проекты - Портфолио разработчика</title>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+    <div class="page">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">Кимов Павел</h1>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="../index.html" class="nav-link">Главная</a></li>
+                        <li><a href="projects.html" class="nav-link active">Проекты</a></li>
+                        <li><a href="diary.html" class="nav-link">Дневник</a></li>
+                        <li><a href="contacts.html" class="nav-link">Контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        
+        <main class="main">
+            <h1 class="page-title">Мои проекты</h1>
+            
+            <div class="projects-filter">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="html">HTML</button>
+                <button class="filter-btn" data-filter="js">JavaScript</button>
+                <button class="filter-btn" data-filter="react">React</button>
+            </div>
+
+            <div class="projects-container">
+                <div class="project-item" data-category="html">
+                    <div class="project-card-large">
+                        <div class="project-image">
+                            <img src="../images/project1.png" alt="Личный сайт">
+                        </div>
+                        <div class="project-content">
+                            <h3>Личный сайт</h3>
+                            <p>Полностью адаптивный личный сайт-портфолио с современным дизайном.</p>
+                            <div class="project-tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">Responsive</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="btn btn-small">Демо</a>
+                                <a href="#" class="btn btn-small btn-outline">Код</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-item" data-category="js">
+                    <div class="project-card-large">
+                        <div class="project-image">
+                            <img src="../images/project2.png" alt="Todo-приложение">
+                        </div>
+                        <div class="project-content">
+                            <h3>Todo-приложение</h3>
+                            <p>Интерактивное приложение для управления задачами с использованием LocalStorage.</p>
+                            <div class="project-tags">
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">LocalStorage</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="btn btn-small">Демо</a>
+                                <a href="#" class="btn btn-small btn-outline">Код</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-item" data-category="html">
+                    <div class="project-card-large">
+                        <div class="project-image">
+                            <img src="../images/project3.png" alt="Портфолио">
+                        </div>
+                        <div class="project-content">
+                            <h3>Портфолио Bootstrap</h3>
+                            <p>Современное портфолио с использованием Bootstrap 5 и кастомных стилей.</p>
+                            <div class="project-tags">
+                                <span class="tag">Bootstrap</span>
+                                <span class="tag">CSS</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="btn btn-small">Демо</a>
+                                <a href="#" class="btn btn-small btn-outline">Код</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-item" data-category="react">
+                    <div class="project-card-large">
+                        <div class="project-image">
+                            <img src="../images/project4.jpg" alt="Интернет-магазин">
+                        </div>
+                        <div class="project-content">
+                            <h3>Интернет-магазин</h3>
+                            <p>Полнофункциональный интернет-магазин на React с корзиной покупок.</p>
+                            <div class="project-tags">
+                                <span class="tag">React</span>
+                                <span class="tag">Redux</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="btn btn-small">Демо</a>
+                                <a href="#" class="btn btn-small btn-outline">Код</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2025 Кимов Павел. Все права защищены.</p>
+                <div class="footer-links">
+                    <a href="contacts.html">Контакты</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const projectItems = document.querySelectorAll('.project-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const filter = this.getAttribute('data-filter');
+
+                    projectItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

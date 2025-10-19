@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - Портфолио разработчика</title>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+    <div class="page">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">Кимов Павел</h1>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="../index.html" class="nav-link">Главная</a></li>
+                        <li><a href="projects.html" class="nav-link">Проекты</a></li>
+                        <li><a href="diary.html" class="nav-link">Дневник</a></li>
+                        <li><a href="contacts.html" class="nav-link active">Контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        
+        <main class="main">
+            <h1 class="page-title">Свяжитесь со мной</h1>
+            
+            <div class="contact-layout">
+                <div class="contact-form-section">
+                    <h2 class="section-title">Форма обратной связи</h2>
+                    
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name" class="form-label">
+                                Имя <span class="required">*</span>
+                            </label>
+                            <input type="text" id="name" name="name" class="form-input" required placeholder="Введите ваше имя">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">
+                                Email <span class="required">*</span>
+                            </label>
+                            <input type="email" id="email" name="email" class="form-input" required placeholder="example@mail.ru">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject" class="form-label">
+                                Тема
+                            </label>
+                            <input type="text" id="subject" name="subject" class="form-input" placeholder="Тема сообщения">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">
+                                Сообщение <span class="required">*</span>
+                            </label>
+                            <textarea id="message" name="message" class="form-textarea" required placeholder="Введите ваше сообщение..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-full">Отправить сообщение</button>
+                    </form>
+                </div>
+                
+                <div class="contact-info-section">
+                    <h2 class="section-title">Контакты</h2>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <h3>Email</h3>
+                            <p>student@edu.mirea.ru</p>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <h3>GitHub</h3>
+                            <p>github.com/ckalabock</p>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <h3>Местоположение</h3>
+                            <p>Россия, Москва</p>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <h3>Телефон</h3>
+                            <p>+7 (777) 777-77-77</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2025 Кимов Павел. Все права защищены.</p>
+                <div class="footer-links">
+                    <a href="contacts.html">Контакты</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            if (!name || !email || !message) {
+                alert('Пожалуйста, заполните все обязательные поля!');
+                return;
+            }
+            
+            alert('Спасибо! Ваше сообщение отправлено.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
