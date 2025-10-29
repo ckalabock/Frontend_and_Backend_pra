@@ -159,7 +159,6 @@
     }
 }
 
-/* ==== КОНТЕЙНЕРНЫЕ ЗАПРОСЫ ДЛЯ ПРОЕКТОВ ==== */
 @supports (container-type: inline-size) {
     .projects-area {
         container-type: inline-size;
