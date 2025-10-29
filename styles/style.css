@@ -27,8 +27,8 @@ body {
 /* ==== SKIP LINK ==== */
 .skip-link {
     position: absolute;
-    inset-inline-start: 1rem;
-    inset-block-start: -100%;
+    left: 1rem;
+    top: -100%;
     z-index: 10000;
     padding: .5rem .75rem;
     background: #111;
@@ -39,7 +39,7 @@ body {
 
 .skip-link:focus,
 .skip-link:focus-visible { 
-    inset-block-start: 1rem; 
+    top: 1rem; 
 }
 
 :focus-visible { 
@@ -68,10 +68,10 @@ a, button, input, textarea {
 .header {
     position: sticky;
     top: 0;
-    padding-block-start: calc(.75rem + env(safe-area-inset-top));
-    padding-block-end: .75rem;
-    padding-inline-start: calc(var(--space-md) + env(safe-area-inset-left));
-    padding-inline-end: calc(var(--space-md) + env(safe-area-inset-right));
+    padding-top: calc(.75rem + env(safe-area-inset-top));
+    padding-bottom: .75rem;
+    padding-left: calc(var(--space-md) + env(safe-area-inset-left));
+    padding-right: calc(var(--space-md) + env(safe-area-inset-right));
     background: #2c3e50;
     color: white;
     z-index: 100;
@@ -372,7 +372,7 @@ a, button, input, textarea {
     overflow: hidden;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 1fr;
     min-width: 0;
 }
 
@@ -409,14 +409,18 @@ a, button, input, textarea {
     }
 
     @container projects (min-width: 640px) {
+        .project-card-large {
+            grid-template-columns: 300px 1fr;
+        }
+        
         .projects-container {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1fr;
         }
     }
 
     @container projects (min-width: 960px) {
         .projects-container {
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
         }
     }
 }
