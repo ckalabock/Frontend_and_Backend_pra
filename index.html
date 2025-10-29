@@ -2,16 +2,18 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Главная - Портфолио разработчика</title>
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
+    <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+    
     <div class="page">
         <header class="header">
             <div class="header-content">
                 <h1 class="logo">Кимов Павел</h1>
-                <nav class="nav">
+                <nav class="nav" aria-label="Основная навигация">
                     <ul class="nav-list">
                         <li><a href="index.html" class="nav-link active">Главная</a></li>
                         <li><a href="pages/projects.html" class="nav-link">Проекты</a></li>
@@ -22,7 +24,7 @@
             </div>
         </header>
         
-        <main class="main">
+        <main class="main" id="main">
             <!-- Hero Section -->
             <section class="hero">
                 <div class="hero-content">
@@ -35,7 +37,11 @@
                         </div>
                     </div>
                     <div class="hero-image">
-                        <img src="images/me.jpg" alt="Фото студента" class="profile-photo">
+                        <picture>
+                            <source srcset="images/me.webp" type="image/webp">
+                            <img src="images/me.jpg" alt="Фото студента" class="profile-photo" 
+                                 width="300" height="300" loading="eager" fetchpriority="high">
+                        </picture>
                     </div>
                 </div>
             </section>
@@ -77,7 +83,11 @@
                 <div class="projects-grid">
                     <div class="project-card">
                         <div class="project-image">
-                            <img src="images/project1.png" alt="Личный сайт">
+                            <picture>
+                                <source srcset="images/project1.webp" type="image/webp">
+                                <img src="images/project1.png" alt="Личный сайт" 
+                                     width="400" height="250" loading="lazy">
+                            </picture>
                         </div>
                         <div class="project-content">
                             <h3>Личный сайт</h3>
@@ -87,7 +97,11 @@
                     
                     <div class="project-card">
                         <div class="project-image">
-                            <img src="images/project2.png" alt="Todo-приложение">
+                            <picture>
+                                <source srcset="images/project2.webp" type="image/webp">
+                                <img src="images/project2.png" alt="Todo-приложение" 
+                                     width="400" height="250" loading="lazy">
+                            </picture>
                         </div>
                         <div class="project-content">
                             <h3>Todo-приложение</h3>
@@ -97,7 +111,11 @@
                     
                     <div class="project-card">
                         <div class="project-image">
-                            <img src="images/project3.png" alt="Портфолио">
+                            <picture>
+                                <source srcset="images/project3.webp" type="image/webp">
+                                <img src="images/project3.png" alt="Портфолио" 
+                                     width="400" height="250" loading="lazy">
+                            </picture>
                         </div>
                         <div class="project-content">
                             <h3>Портфолио</h3>
