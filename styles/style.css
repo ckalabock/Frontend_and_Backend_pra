@@ -74,7 +74,7 @@ a, button, input, textarea, select {
 
 /* ==== БЛОК PAGE ==== */
 .page {
-    max-width: 1200px;
+    max-width: 1400px; /* Увеличили максимальную ширину */
     margin: 0 auto;
     background: white;
     min-height: 100vh;
@@ -105,7 +105,7 @@ a, button, input, textarea, select {
     justify-content: space-between;
     align-items: center;
     padding: 0 2rem;
-    max-width: 1200px;
+    max-width: 1400px; /* Согласовано с .page */
     margin: 0 auto;
 }
 
@@ -152,9 +152,10 @@ a, button, input, textarea, select {
 /* ==== БЛОК MAIN ==== */
 .main {
     padding: clamp(.75rem, .5rem + 1vw, 2rem);
-    max-width: 1000px;
+    max-width: 1300px; /* Увеличили для более широких карточек */
     margin: 0 auto;
     flex: 1;
+    width: 100%;
 }
 
 /* ==== HERO SECTION ==== */
@@ -416,7 +417,7 @@ a, button, input, textarea, select {
     display: flex;
     justify-content: center;
     gap: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     flex-wrap: wrap;
 }
 
@@ -424,12 +425,13 @@ a, button, input, textarea, select {
     background: white;
     color: #333;
     border: 2px solid #bdc3c7;
-    padding: max(.5rem, calc((44px - 1em)/2)) 1rem;
+    padding: max(.5rem, calc((44px - 1em)/2)) 1.5rem;
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.3s;
     min-height: 44px;
     font-weight: 600;
+    font-size: 1rem;
 }
 
 .filter-btn:hover,
@@ -438,6 +440,7 @@ a, button, input, textarea, select {
     color: white;
     border-color: var(--primary-color);
     transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(52, 152, 219, 0.2);
 }
 
 .filter-btn:focus {
@@ -446,12 +449,17 @@ a, button, input, textarea, select {
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
 }
 
-/* СЕТКА ПРОЕКТОВ 3→2→1 */
+/* ИСПРАВЛЕННАЯ СЕТКА ПРОЕКТОВ - ШИРОКИЕ КАРТОЧКИ */
+.projects-area {
+    width: 100%;
+}
+
 .projects-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 2.5rem;
     align-items: start;
+    width: 100%;
 }
 
 .project-item {
@@ -460,24 +468,25 @@ a, button, input, textarea, select {
 
 .project-card-large {
     background: white;
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
     min-width: 0;
-    min-height: 480px;
+    width: 100%;
+    min-height: 450px;
     transition: all 0.3s ease;
-    border: 1px solid #ecf0f1;
+    border: 1px solid #e1e8ed;
 }
 
 .project-card-large:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
 }
 
 .project-card-large .project-image {
-    height: 200px;
+    height: 240px;
     flex-shrink: 0;
     overflow: hidden;
 }
@@ -486,33 +495,35 @@ a, button, input, textarea, select {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease;
 }
 
 .project-card-large:hover .project-image img {
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
 .project-card-large .project-content {
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding: 1.5rem;
-    min-height: 280px;
+    padding: 2rem;
+    min-height: 260px;
 }
 
 .project-card-large .project-content h3 {
-    font-size: 1.25rem;
-    margin-bottom: 0.75rem;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
     color: var(--secondary-color);
     line-height: 1.3;
+    font-weight: 700;
 }
 
 .project-card-large .project-content p {
     flex: 1;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     color: #555;
-    line-height: 1.5;
+    line-height: 1.6;
+    font-size: 1.05rem;
 }
 
 .project-tags {
@@ -523,11 +534,11 @@ a, button, input, textarea, select {
 }
 
 .tag {
-    background: #ecf0f1;
-    color: var(--secondary-color);
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    font-size: 0.8rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
     font-weight: 600;
 }
 
@@ -535,7 +546,7 @@ a, button, input, textarea, select {
     display: flex;
     gap: 1rem;
     margin-top: auto;
-    padding-top: 1rem;
+    padding-top: 1.5rem;
     border-top: 1px solid #ecf0f1;
 }
 
@@ -835,7 +846,7 @@ a, button, input, textarea, select {
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 2rem;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
@@ -858,13 +869,34 @@ a, button, input, textarea, select {
 }
 
 /* ==== АДАПТИВНОСТЬ ==== */
+@media (max-width: 1400px) {
+    .page {
+        margin: 0 1rem;
+    }
+}
+
 @media (max-width: 1200px) {
     .projects-container {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+    
+    .project-card-large .project-content {
+        padding: 1.75rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .projects-container {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
     }
     
     .project-card-large {
-        min-height: 460px;
+        min-height: 420px;
+    }
+    
+    .project-card-large .project-image {
+        height: 220px;
     }
 }
 
@@ -902,19 +934,30 @@ a, button, input, textarea, select {
 
     .projects-container {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
-
+    
+    .project-card-large {
+        min-height: 400px;
+    }
+    
+    .project-card-large .project-image {
+        height: 200px;
+    }
+    
+    .project-card-large .project-content {
+        padding: 1.5rem;
+        min-height: 240px;
+    }
+    
     .projects-filter {
         flex-direction: column;
         align-items: center;
     }
-
+    
     .filter-btn {
-        width: 200px;
-    }
-
-    .project-card-large {
-        min-height: 440px;
+        width: 100%;
+        max-width: 300px;
     }
 
     .footer-content {
@@ -928,7 +971,28 @@ a, button, input, textarea, select {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 576px) {
+    .project-card-large {
+        min-height: 380px;
+        border-radius: 8px;
+    }
+    
+    .project-card-large .project-content {
+        padding: 1.25rem;
+    }
+    
+    .project-card-large .project-content h3 {
+        font-size: 1.3rem;
+    }
+    
+    .project-links {
+        flex-direction: column;
+    }
+    
+    .project-card-large .project-image {
+        height: 180px;
+    }
+    
     .skills-grid {
         grid-template-columns: 1fr;
     }
@@ -945,19 +1009,6 @@ a, button, input, textarea, select {
     .btn {
         width: 100%;
         max-width: 250px;
-    }
-    
-    .project-links {
-        flex-direction: column;
-    }
-    
-    .project-card-large {
-        min-height: 420px;
-    }
-    
-    .project-card-large .project-content {
-        padding: 1.25rem;
-        min-height: 260px;
     }
 }
 
@@ -1010,7 +1061,7 @@ a, button, input, textarea, select {
 
     @container projects (min-width: 1200px) {
         .projects-container {
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
         }
     }
 }
@@ -1060,5 +1111,20 @@ a, button, input, textarea, select {
     .tag {
         background: #555;
         color: #e0e0e0;
+    }
+    
+    .project-card-large .project-content h3,
+    .project-content h3,
+    .skill-item h3,
+    .course-card h3,
+    .contact-item h3 {
+        color: #e0e0e0;
+    }
+    
+    .project-card-large .project-content p,
+    .project-content p,
+    .course-card p,
+    .contact-item p {
+        color: #b0b0b0;
     }
 }
