@@ -10,6 +10,8 @@
     --space-md: 1rem;
     --space-lg: 1.5rem;
     --space-2xl: 3rem;
+    --error-color: #dc3545;
+    --success-color: #198754;
 }
 
 html, body {
@@ -35,11 +37,14 @@ body {
     color: #fff;
     border-radius: .5rem;
     text-decoration: none;
+    font-weight: bold;
 }
 
 .skip-link:focus,
 .skip-link:focus-visible { 
     top: 1rem; 
+    outline: 3px solid #2563eb;
+    outline-offset: 2px;
 }
 
 :focus-visible { 
@@ -47,8 +52,21 @@ body {
     outline-offset: 2px; 
 }
 
-a, button, input, textarea { 
+a, button, input, textarea, select { 
     outline-offset: 2px; 
+}
+
+/* ==== СКРЫТЫЕ ЭЛЕМЕНТЫ ДЛЯ СКРИНРИДЕРОВ ==== */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 /* ==== БЛОК PAGE ==== */
@@ -109,14 +127,23 @@ a, button, input, textarea {
     min-height: 44px;
     display: flex;
     align-items: center;
+    border: 2px solid transparent;
 }
 
 .nav-link:hover {
     background-color: #34495e;
 }
 
-.nav-link.active {
+.nav-link.active,
+.nav-link[aria-current="page"] {
     background-color: #3498db;
+    border-color: #fff;
+}
+
+.nav-link:focus {
+    outline: none;
+    border-color: #fff;
+    background-color: #34495e;
 }
 
 /* ==== БЛОК MAIN ==== */
@@ -179,6 +206,8 @@ a, button, input, textarea {
     font-size: 1rem;
     text-align: center;
     min-height: 44px;
+    border: 2px solid transparent;
+    font-weight: 600;
 }
 
 .btn-primary {
@@ -190,6 +219,12 @@ a, button, input, textarea {
     background: #2980b9;
 }
 
+.btn-primary:focus {
+    outline: none;
+    border-color: #fff;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+}
+
 .btn-secondary {
     background: #e74c3c;
     color: white;
@@ -197,6 +232,12 @@ a, button, input, textarea {
 
 .btn-secondary:hover {
     background: #c0392b;
+}
+
+.btn-secondary:focus {
+    outline: none;
+    border-color: #fff;
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.3);
 }
 
 .btn-outline {
@@ -208,6 +249,12 @@ a, button, input, textarea {
 .btn-outline:hover {
     background: #3498db;
     color: white;
+}
+
+.btn-outline:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
 }
 
 .btn-small {
@@ -348,6 +395,7 @@ a, button, input, textarea {
     cursor: pointer;
     transition: all 0.3s;
     min-height: 44px;
+    font-weight: 600;
 }
 
 .filter-btn:hover,
@@ -355,6 +403,12 @@ a, button, input, textarea {
     background: #3498db;
     color: white;
     border-color: #3498db;
+}
+
+.filter-btn:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
 }
 
 /* СЕТКА ПРОЕКТОВ 3→2→1 */
@@ -404,6 +458,7 @@ a, button, input, textarea {
     padding: 0.25rem 0.5rem;
     border-radius: 4px;
     font-size: 0.8rem;
+    font-weight: 600;
 }
 
 .project-links {
@@ -589,7 +644,7 @@ a, button, input, textarea {
 }
 
 .required {
-    color: #e74c3c;
+    color: var(--error-color);
 }
 
 .form-input,
@@ -606,11 +661,37 @@ a, button, input, textarea {
 .form-textarea:focus {
     outline: none;
     border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
 }
 
 .form-textarea {
     resize: vertical;
     min-height: 120px;
+}
+
+/* ==== СООБЩЕНИЯ ОБ ОШИБКАХ И УСПЕХЕ ==== */
+.error-message {
+    color: var(--error-color);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: none;
+}
+
+.help-text {
+    color: #7f8c8d;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.success-message {
+    background: var(--success-color);
+    color: white;
+    padding: 1rem;
+    border-radius: 4px;
+    margin: 1rem 0;
+    text-align: center;
+    display: none;
+    font-weight: 600;
 }
 
 /* ==== ИНФОРМАЦИЯ О КОНТАКТАХ ==== */
@@ -627,6 +708,23 @@ a, button, input, textarea {
 
 .contact-item p {
     color: #7f8c8d;
+}
+
+.contact-item a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-item a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+.contact-item a:focus {
+    outline: none;
+    text-decoration: underline;
+    border-radius: 2px;
 }
 
 /* ==== БЛОК FOOTER ==== */
@@ -650,10 +748,18 @@ a, button, input, textarea {
     color: white;
     text-decoration: none;
     transition: color 0.3s;
+    padding: 0.5rem;
+    border-radius: 4px;
 }
 
 .footer-links a:hover {
     color: #3498db;
+}
+
+.footer-links a:focus {
+    outline: none;
+    color: #3498db;
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* ==== АДАПТИВНОСТЬ ==== */
@@ -753,11 +859,21 @@ a, button, input, textarea {
         animation: none !important;
         transition: none !important;
     }
+    
+    .project-card,
+    .project-card-large {
+        transition: none;
+    }
 }
 
 @media (prefers-contrast: more) {
     .btn, .filter-btn {
         box-shadow: inset 0 0 0 2px #fff;
+    }
+    
+    .nav-link.active,
+    .nav-link[aria-current="page"] {
+        border-width: 3px;
     }
 }
 
@@ -785,5 +901,18 @@ a, button, input, textarea {
         .projects-container {
             grid-template-columns: repeat(3, 1fr);
         }
+    }
+}
+
+/* ==== ВЫСОКИЙ КОНТРАСТ ==== */
+@media (prefers-contrast: high) {
+    :root {
+        --error-color: #ff0000;
+        --success-color: #008000;
+    }
+    
+    .skill-progress,
+    .progress-fill {
+        border: 1px solid #000;
     }
 }

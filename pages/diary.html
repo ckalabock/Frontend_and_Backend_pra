@@ -10,75 +10,76 @@
     <a class="skip-link" href="#main">Перейти к основному содержимому</a>
     
     <div class="page">
-        <header class="header">
+        <header class="header" role="banner">
             <div class="header-content">
                 <h1 class="logo">Кимов Павел</h1>
                 <nav class="nav" aria-label="Основная навигация">
                     <ul class="nav-list">
                         <li><a href="../index.html" class="nav-link">Главная</a></li>
                         <li><a href="projects.html" class="nav-link">Проекты</a></li>
-                        <li><a href="diary.html" class="nav-link active">Дневник</a></li>
+                        <li><a href="diary.html" class="nav-link active" aria-current="page">Дневник</a></li>
                         <li><a href="contacts.html" class="nav-link">Контакты</a></li>
                     </ul>
                 </nav>
             </div>
         </header>
         
-        <main class="main" id="main">
+        <main class="main" id="main" role="main">
             <h1 class="page-title">Мой учебный прогресс</h1>
             
             <div class="diary-layout">
-                <div class="diary-entries">
-                    <h2 class="section-title">Последние записи</h2>
+                <section class="diary-entries" aria-labelledby="entries-title">
+                    <h2 id="entries-title" class="section-title">Последние записи</h2>
                     
                     <div class="timeline">
-                        <div class="timeline-item completed">
+                        <article class="timeline-item completed">
                             <div class="timeline-date">15 декабря 2025</div>
                             <div class="timeline-content">
                                 <h3>Верстка макета сайта</h3>
                                 <p>Завершил верстку адаптивного макета личного сайта.</p>
                                 <span class="status-badge completed">Завершено</span>
                             </div>
-                        </div>
+                        </article>
                         
-                        <div class="timeline-item completed">
+                        <article class="timeline-item completed">
                             <div class="timeline-date">10 декабря 2025</div>
                             <div class="timeline-content">
                                 <h3>JavaScript основы</h3>
                                 <p>Изучил основы JavaScript: переменные, функции, DOM manipulation.</p>
                                 <span class="status-badge completed">Завершено</span>
                             </div>
-                        </div>
+                        </article>
                         
-                        <div class="timeline-item in-progress">
+                        <article class="timeline-item in-progress">
                             <div class="timeline-date">5 декабря 2025</div>
                             <div class="timeline-content">
                                 <h3>Работа с формами</h3>
                                 <p>Изучаю валидацию форм, обработку событий и отправку данных.</p>
                                 <span class="status-badge in-progress">В процессе</span>
                             </div>
-                        </div>
+                        </article>
                         
-                        <div class="timeline-item in-progress">
+                        <article class="timeline-item in-progress">
                             <div class="timeline-date">1 декабря 2025</div>
                             <div class="timeline-content">
                                 <h3>Адаптивный дизайн</h3>
                                 <p>Осваиваю медиа-запросы и mobile-first подход.</p>
                                 <span class="status-badge in-progress">В процессе</span>
                             </div>
-                        </div>
+                        </article>
                     </div>
                     
-                    <button class="btn btn-primary" id="addEntryBtn">Добавить запись</button>
-                </div>
+                    <button class="btn btn-primary" id="addEntryBtn" aria-describedby="addEntryHelp">Добавить запись</button>
+                    <div id="addEntryHelp" class="help-text">Функция добавления новой записи будет реализована в будущем</div>
+                </section>
                 
-                <div class="current-courses">
-                    <h2 class="section-title">Текущие курсы</h2>
+                <aside class="current-courses" aria-labelledby="courses-title">
+                    <h2 id="courses-title" class="section-title">Текущие курсы</h2>
                     
                     <div class="course-card">
                         <h3>Веб-разработка</h3>
                         <div class="course-progress">
-                            <div class="progress-bar">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Прогресс курса Веб-разработка">
                                 <div class="progress-fill" style="width: 90%"></div>
                             </div>
                             <span class="progress-text">90%</span>
@@ -89,7 +90,7 @@
                     <div class="course-card">
                         <h3>JavaScript</h3>
                         <div class="course-progress">
-                            <div class="progress-bar">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" aria-label="Прогресс курса JavaScript">
                                 <div class="progress-fill" style="width: 70%"></div>
                             </div>
                             <span class="progress-text">70%</span>
@@ -100,18 +101,18 @@
                     <div class="course-card">
                         <h3>React</h3>
                         <div class="course-progress">
-                            <div class="progress-bar">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" aria-label="Прогресс курса React">
                                 <div class="progress-fill" style="width: 50%"></div>
                             </div>
                             <span class="progress-text">50%</span>
                         </div>
                         <p>Компонентный подход, хуки</p>
                     </div>
-                </div>
+                </aside>
             </div>
         </main>
         
-        <footer class="footer">
+        <footer class="footer" role="contentinfo">
             <div class="footer-content">
                 <p>&copy; 2025 Кимов Павел. Все права защищены.</p>
                 <div class="footer-links">
@@ -123,8 +124,22 @@
 
     <script>
         document.getElementById('addEntryBtn').addEventListener('click', function() {
+            const announcement = document.getElementById('diary-announcement') || createAnnouncement();
+            announcement.textContent = 'Функция добавления новой записи будет реализована в будущем!';
+            
+            // Временное уведомление
             alert('Функция добавления новой записи будет реализована в будущем!');
         });
+
+        function createAnnouncement() {
+            const announcement = document.createElement('div');
+            announcement.id = 'diary-announcement';
+            announcement.className = 'sr-only';
+            announcement.setAttribute('aria-live', 'polite');
+            announcement.setAttribute('aria-atomic', 'true');
+            document.body.appendChild(announcement);
+            return announcement;
+        }
     </script>
 </body>
 </html>
