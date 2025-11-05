@@ -12,6 +12,9 @@
     --space-2xl: 3rem;
     --error-color: #dc3545;
     --success-color: #198754;
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --accent-color: #e74c3c;
 }
 
 html, body {
@@ -90,7 +93,7 @@ a, button, input, textarea, select {
     padding-bottom: .75rem;
     padding-left: calc(var(--space-md) + env(safe-area-inset-left));
     padding-right: calc(var(--space-md) + env(safe-area-inset-right));
-    background: #2c3e50;
+    background: var(--secondary-color);
     color: white;
     z-index: 100;
     isolation: isolate;
@@ -136,7 +139,7 @@ a, button, input, textarea, select {
 
 .nav-link.active,
 .nav-link[aria-current="page"] {
-    background-color: #3498db;
+    background-color: var(--primary-color);
     border-color: #fff;
 }
 
@@ -172,11 +175,11 @@ a, button, input, textarea, select {
 .hero-text h2 {
     font-size: clamp(1.5rem, 1.1rem + 2vw, 2rem);
     margin-bottom: 1rem;
-    color: #2c3e50;
+    color: var(--secondary-color);
 }
 
 .highlight {
-    color: #e74c3c;
+    color: var(--accent-color);
     font-weight: bold;
 }
 
@@ -192,6 +195,7 @@ a, button, input, textarea, select {
     height: 300px;
     border-radius: 8px;
     object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 /* ==== КНОПКИ ==== */
@@ -202,7 +206,7 @@ a, button, input, textarea, select {
     border-radius: 4px;
     text-decoration: none;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
     font-size: 1rem;
     text-align: center;
     min-height: 44px;
@@ -211,12 +215,14 @@ a, button, input, textarea, select {
 }
 
 .btn-primary {
-    background: #3498db;
+    background: var(--primary-color);
     color: white;
 }
 
 .btn-primary:hover {
     background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
 }
 
 .btn-primary:focus {
@@ -226,12 +232,14 @@ a, button, input, textarea, select {
 }
 
 .btn-secondary {
-    background: #e74c3c;
+    background: var(--accent-color);
     color: white;
 }
 
 .btn-secondary:hover {
     background: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(231, 76, 60, 0.3);
 }
 
 .btn-secondary:focus {
@@ -242,18 +250,19 @@ a, button, input, textarea, select {
 
 .btn-outline {
     background: transparent;
-    color: #3498db;
-    border: 2px solid #3498db;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
 }
 
 .btn-outline:hover {
-    background: #3498db;
+    background: var(--primary-color);
     color: white;
+    transform: translateY(-2px);
 }
 
 .btn-outline:focus {
     outline: none;
-    border-color: #3498db;
+    border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
 }
 
@@ -271,8 +280,8 @@ a, button, input, textarea, select {
     font-size: clamp(1.5rem, 1.1rem + 2vw, 2rem);
     text-align: center;
     margin-bottom: 2rem;
-    color: #2c3e50;
-    border-bottom: 2px solid #3498db;
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--primary-color);
     padding-bottom: 0.5rem;
 }
 
@@ -280,7 +289,7 @@ a, button, input, textarea, select {
     font-size: clamp(1.8rem, 1.5rem + 1.5vw, 2.5rem);
     text-align: center;
     margin-bottom: 2rem;
-    color: #2c3e50;
+    color: var(--secondary-color);
 }
 
 .text-center {
@@ -305,11 +314,17 @@ a, button, input, textarea, select {
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.skill-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .skill-item h3 {
     margin-bottom: 1rem;
-    color: #2c3e50;
+    color: var(--secondary-color);
 }
 
 .skill-bar {
@@ -320,7 +335,7 @@ a, button, input, textarea, select {
 }
 
 .skill-progress {
-    background: #3498db;
+    background: var(--primary-color);
     color: white;
     height: 100%;
     display: flex;
@@ -328,6 +343,7 @@ a, button, input, textarea, select {
     justify-content: center;
     font-size: 0.9rem;
     font-weight: bold;
+    transition: width 0.8s ease;
 }
 
 /* ==== ПРОЕКТЫ НА ГЛАВНОЙ ==== */
@@ -337,7 +353,7 @@ a, button, input, textarea, select {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
     margin: 2rem 0;
 }
@@ -347,17 +363,21 @@ a, button, input, textarea, select {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
+    transition: all 0.3s ease;
     min-width: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .project-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
 .project-image {
     width: 100%;
-    height: 150px;
+    height: 180px;
     overflow: hidden;
 }
 
@@ -365,16 +385,30 @@ a, button, input, textarea, select {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.05);
 }
 
 .project-content {
-    padding: 1rem;
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .project-content h3 {
     margin-bottom: 0.5rem;
-    color: #2c3e50;
+    color: var(--secondary-color);
     overflow-wrap: anywhere;
+    font-size: 1.25rem;
+}
+
+.project-content p {
+    color: #666;
+    flex: 1;
 }
 
 /* ==== СТРАНИЦА ПРОЕКТОВ ==== */
@@ -400,14 +434,15 @@ a, button, input, textarea, select {
 
 .filter-btn:hover,
 .filter-btn.active {
-    background: #3498db;
+    background: var(--primary-color);
     color: white;
-    border-color: #3498db;
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
 }
 
 .filter-btn:focus {
     outline: none;
-    border-color: #3498db;
+    border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
 }
 
@@ -416,6 +451,7 @@ a, button, input, textarea, select {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
+    align-items: start;
 }
 
 .project-item {
@@ -430,12 +466,31 @@ a, button, input, textarea, select {
     display: flex;
     flex-direction: column;
     min-width: 0;
-    height: 100%;
+    min-height: 480px;
+    transition: all 0.3s ease;
+    border: 1px solid #ecf0f1;
+}
+
+.project-card-large:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
 .project-card-large .project-image {
     height: 200px;
     flex-shrink: 0;
+    overflow: hidden;
+}
+
+.project-card-large .project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.project-card-large:hover .project-image img {
+    transform: scale(1.05);
 }
 
 .project-card-large .project-content {
@@ -443,6 +498,21 @@ a, button, input, textarea, select {
     display: flex;
     flex-direction: column;
     padding: 1.5rem;
+    min-height: 280px;
+}
+
+.project-card-large .project-content h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--secondary-color);
+    line-height: 1.3;
+}
+
+.project-card-large .project-content p {
+    flex: 1;
+    margin-bottom: 1rem;
+    color: #555;
+    line-height: 1.5;
 }
 
 .project-tags {
@@ -454,7 +524,7 @@ a, button, input, textarea, select {
 
 .tag {
     background: #ecf0f1;
-    color: #2c3e50;
+    color: var(--secondary-color);
     padding: 0.25rem 0.5rem;
     border-radius: 4px;
     font-size: 0.8rem;
@@ -466,6 +536,7 @@ a, button, input, textarea, select {
     gap: 1rem;
     margin-top: auto;
     padding-top: 1rem;
+    border-top: 1px solid #ecf0f1;
 }
 
 /* ==== УЧЕБНЫЙ ДНЕВНИК ==== */
@@ -499,6 +570,11 @@ a, button, input, textarea, select {
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     border-left: 4px solid #bdc3c7;
+    transition: transform 0.3s ease;
+}
+
+.timeline-item:hover {
+    transform: translateX(5px);
 }
 
 .timeline-item::before {
@@ -531,13 +607,13 @@ a, button, input, textarea, select {
 
 .timeline-date {
     font-weight: bold;
-    color: #3498db;
+    color: var(--primary-color);
     margin-bottom: 0.5rem;
 }
 
 .timeline-content h3 {
     margin-bottom: 0.5rem;
-    color: #2c3e50;
+    color: var(--secondary-color);
 }
 
 .status-badge {
@@ -571,11 +647,17 @@ a, button, input, textarea, select {
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.course-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .course-card h3 {
     margin-bottom: 1rem;
-    color: #2c3e50;
+    color: var(--secondary-color);
 }
 
 .course-progress {
@@ -595,13 +677,14 @@ a, button, input, textarea, select {
 
 .progress-fill {
     height: 100%;
-    background: #3498db;
+    background: var(--primary-color);
     border-radius: 4px;
+    transition: width 0.8s ease;
 }
 
 .progress-text {
     font-weight: bold;
-    color: #3498db;
+    color: var(--primary-color);
     min-width: 40px;
 }
 
@@ -640,7 +723,7 @@ a, button, input, textarea, select {
 
 .form-label {
     font-weight: bold;
-    color: #2c3e50;
+    color: var(--secondary-color);
 }
 
 .required {
@@ -660,7 +743,7 @@ a, button, input, textarea, select {
 .form-input:focus,
 .form-textarea:focus {
     outline: none;
-    border-color: #3498db;
+    border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
 }
 
@@ -701,9 +784,21 @@ a, button, input, textarea, select {
     gap: 1.5rem;
 }
 
+.contact-item {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
 .contact-item h3 {
     margin-bottom: 0.5rem;
-    color: #2c3e50;
+    color: var(--secondary-color);
 }
 
 .contact-item p {
@@ -711,7 +806,7 @@ a, button, input, textarea, select {
 }
 
 .contact-item a {
-    color: #3498db;
+    color: var(--primary-color);
     text-decoration: none;
     transition: color 0.3s;
 }
@@ -729,7 +824,7 @@ a, button, input, textarea, select {
 
 /* ==== БЛОК FOOTER ==== */
 .footer {
-    background: #2c3e50;
+    background: var(--secondary-color);
     color: white;
     margin-top: 3rem;
     padding-bottom: calc(1rem + env(safe-area-inset-bottom));
@@ -753,12 +848,12 @@ a, button, input, textarea, select {
 }
 
 .footer-links a:hover {
-    color: #3498db;
+    color: var(--primary-color);
 }
 
 .footer-links a:focus {
     outline: none;
-    color: #3498db;
+    color: var(--primary-color);
     background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -766,6 +861,10 @@ a, button, input, textarea, select {
 @media (max-width: 1200px) {
     .projects-container {
         grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .project-card-large {
+        min-height: 460px;
     }
 }
 
@@ -815,7 +914,7 @@ a, button, input, textarea, select {
     }
 
     .project-card-large {
-        grid-template-columns: 1fr;
+        min-height: 440px;
     }
 
     .footer-content {
@@ -851,6 +950,15 @@ a, button, input, textarea, select {
     .project-links {
         flex-direction: column;
     }
+    
+    .project-card-large {
+        min-height: 420px;
+    }
+    
+    .project-card-large .project-content {
+        padding: 1.25rem;
+        min-height: 260px;
+    }
 }
 
 /* ==== ДОСТУПНОСТЬ ==== */
@@ -861,7 +969,10 @@ a, button, input, textarea, select {
     }
     
     .project-card,
-    .project-card-large {
+    .project-card-large,
+    .skill-item,
+    .course-card,
+    .contact-item {
         transition: none;
     }
 }
@@ -916,175 +1027,38 @@ a, button, input, textarea, select {
         border: 1px solid #000;
     }
 }
-/* ==== СТРАНИЦА ПРОЕКТОВ ==== */
-.projects-filter {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-}
 
-.filter-btn {
-    background: white;
-    color: #333;
-    border: 2px solid #bdc3c7;
-    padding: max(.5rem, calc((44px - 1em)/2)) 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.3s;
-    min-height: 44px;
-    font-weight: 600;
-}
-
-.filter-btn:hover,
-.filter-btn.active {
-    background: #3498db;
-    color: white;
-    border-color: #3498db;
-}
-
-.filter-btn:focus {
-    outline: none;
-    border-color: #3498db;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
-}
-
-/* СЕТКА ПРОЕКТОВ 3→2→1 */
-.projects-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    align-items: start; /* Важно: выравнивание по верху */
-}
-
-.project-item {
-    min-width: 0;
-}
-
-.project-card-large {
-    background: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    /* Убрано height: 100% и заменено на min-height */
-    min-height: 450px; /* Фиксированная минимальная высота */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.project-card-large:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-}
-
-.project-card-large .project-image {
-    height: 200px;
-    flex-shrink: 0;
-    overflow: hidden;
-}
-
-.project-card-large .project-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.project-card-large:hover .project-image img {
-    transform: scale(1.05);
-}
-
-.project-card-large .project-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 1.5rem;
-    min-height: 250px; /* Гарантирует минимальную высоту контента */
-}
-
-.project-card-large .project-content h3 {
-    font-size: 1.25rem;
-    margin-bottom: 0.75rem;
-    color: #2c3e50;
-    line-height: 1.3;
-}
-
-.project-card-large .project-content p {
-    flex: 1;
-    margin-bottom: 1rem;
-    color: #555;
-    line-height: 1.5;
-}
-
-.project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin: 1rem 0;
-}
-
-.tag {
-    background: #ecf0f1;
-    color: #2c3e50;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    font-weight: 600;
-}
-
-.project-links {
-    display: flex;
-    gap: 1rem;
-    margin-top: auto;
-    padding-top: 1rem;
-    border-top: 1px solid #ecf0f1;
-}
-
-/* Адаптивность для проектов */
-@media (max-width: 1200px) {
-    .projects-container {
-        grid-template-columns: repeat(2, 1fr);
+/* ==== ТЕМНАЯ ТЕМА ==== */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1a1a1a;
+        color: #e0e0e0;
     }
     
-    .project-card-large {
-        min-height: 420px;
-    }
-}
-
-@media (max-width: 768px) {
-    .projects-container {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+    .page {
+        background: #2d2d2d;
     }
     
-    .project-card-large {
-        min-height: 400px;
+    .skill-item,
+    .project-card,
+    .project-card-large,
+    .course-card,
+    .contact-form-section,
+    .contact-info-section,
+    .timeline-item {
+        background: #3d3d3d;
+        color: #e0e0e0;
     }
     
-    .project-card-large .project-content {
-        min-height: 200px;
-        padding: 1.25rem;
+    .form-input,
+    .form-textarea {
+        background: #2d2d2d;
+        color: #e0e0e0;
+        border-color: #555;
     }
     
-    .project-links {
-        flex-direction: column;
-    }
-}
-
-@media (max-width: 480px) {
-    .project-card-large {
-        min-height: 380px;
-    }
-    
-    .project-card-large .project-image {
-        height: 180px;
-    }
-    
-    .project-card-large .project-content {
-        padding: 1rem;
-        min-height: 180px;
+    .tag {
+        background: #555;
+        color: #e0e0e0;
     }
 }
